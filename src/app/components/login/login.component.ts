@@ -6,6 +6,8 @@ import {
   ValidatorFn,
   Validators,
 } from "@angular/forms";
+import { Router } from "@angular/router";
+declare let Email: any;
 
 @Component({
   selector: "app-login",
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   isAndroid: boolean = true;
   loginform: FormGroup;
 
-  constructor(public platform: Platform) {}
+  constructor(public platform: Platform, public router: Router) {}
 
   ngOnInit(): void {
     /* This is used to show or hide the 
@@ -71,4 +73,26 @@ export class LoginComponent implements OnInit {
       }
     };
   }
+
+  reDirectToHome = () => {
+    //Method to send email
+    Email.send({
+      Host: `smtp.elasticemail.com`,
+      Username: "gajananpalankar33@gmail.com",
+      Password: "4C546688D70C5A274F70D48DD529EE9A6D3A",
+      To: "gajapalankar33@gmail.com",
+      //To: "wellthy.assignment@gmail.com",
+      From: "gajananpalankar33@gmail.com",
+      Subject: "Gajanan, Wellthy Angular Assignment",
+      Body: `{
+        "username": ${this.loginform.value.username},
+        "mobnum": ${this.loginform.value.phone}
+      }`,
+    }).then((message) => {
+      this.loginform.reset();
+
+      //Redirect to home page on successfull validation and email sent
+      this.router.navigate(["home"]);
+    });
+  };
 }

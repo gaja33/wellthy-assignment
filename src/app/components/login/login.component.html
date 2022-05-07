@@ -91,7 +91,11 @@
                 </div>
               </div>
               <div class="col-sm-4">
-                <button class="btn btn-warning" [disabled]="loginform.invalid">
+                <button
+                  class="btn btn-warning"
+                  [disabled]="loginform.invalid"
+                  (click)="reDirectToHome()"
+                >
                   <span>Get link</span>
                 </button>
               </div>
