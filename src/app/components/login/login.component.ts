@@ -7,6 +7,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ConstantsService } from "src/app/shared/constants/constants.service";
 declare let Email: any;
 
 @Component({
@@ -19,7 +20,11 @@ export class LoginComponent implements OnInit {
   isAndroid: boolean = true;
   loginform: FormGroup;
 
-  constructor(public platform: Platform, public router: Router) {}
+  constructor(
+    public platform: Platform,
+    public router: Router,
+    public constants: ConstantsService
+  ) {}
 
   ngOnInit(): void {
     /* This is used to show or hide the 
@@ -77,9 +82,9 @@ export class LoginComponent implements OnInit {
   reDirectToHome = () => {
     //Method to send email
     Email.send({
-      Host: `smtp.elasticemail.com`,
-      Username: "gajananpalankar33@gmail.com",
-      Password: "4C546688D70C5A274F70D48DD529EE9A6D3A",
+      Host: this.constants.HOST,
+      Username: this.constants.USERNAME,
+      Password: this.constants.PASSWORD,
       To: "gajapalankar33@gmail.com",
       //To: "wellthy.assignment@gmail.com",
       From: "gajananpalankar33@gmail.com",
