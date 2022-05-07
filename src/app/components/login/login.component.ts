@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
   isIOS: boolean = true;
   isAndroid: boolean = true;
   loginform: FormGroup;
+  hideLink: boolean = false;
+  enableLink: boolean = false;
+  enableTick: boolean = false;
+  enableSent: boolean = true;
 
   constructor(
     public platform: Platform,
@@ -80,6 +84,9 @@ export class LoginComponent implements OnInit {
   }
 
   reDirectToHome = () => {
+    this.hideLink = true;
+    this.enableLink = true;
+
     //Method to send email
     Email.send({
       Host: this.constants.HOST,
@@ -94,10 +101,16 @@ export class LoginComponent implements OnInit {
         "mobnum": ${this.loginform.value.phone}
       }`,
     }).then((message) => {
-      this.loginform.reset();
-
-      //Redirect to home page on successfull validation and email sent
-      this.router.navigate(["home"]);
+      this.hideLink = false;
+      this.enableTick = true;
+      setTimeout(() => {
+        this.enableSent = false;
+      }, 1000);
+      setTimeout(() => {
+        this.loginform.reset();
+        //Redirect to home page on successfull validation and email sent
+        this.router.navigate(["home"]);
+      }, 2000);
     });
   };
 }

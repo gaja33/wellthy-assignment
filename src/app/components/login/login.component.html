@@ -92,11 +92,22 @@
               </div>
               <div class="col-sm-4">
                 <button
-                  class="btn btn-warning"
+                  class="btn btn-warning btn-custom btn-ripple"
+                  [ngClass]="{ active: !enableSent }"
                   [disabled]="loginform.invalid"
                   (click)="reDirectToHome()"
                 >
-                  <span>Get link</span>
+                  <i *ngIf="hideLink" class="fa fa-circle-o-notch fa-spin"></i>
+                  <i
+                    *ngIf="enableTick"
+                    [ngClass]="{ active: !enableSent }"
+                    class="fa fa-check-circle-o"
+                    aria-hidden="true"
+                  ></i>
+                  <span *ngIf="!enableLink"> Get link</span>
+                  <span *ngIf="!enableSent" [ngClass]="{ active: !enableSent }">
+                    Sent</span
+                  >
                 </button>
               </div>
             </div>

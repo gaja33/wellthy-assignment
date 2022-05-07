@@ -7,7 +7,7 @@
   height: 100vh;
 
   .content-wrapper {
-    padding: 150px 0 0 150px;
+    padding: 150px 0 0 20%;
 
     .logo-wrapper {
       text-align: left;
@@ -42,7 +42,7 @@
       }
     }
     .form-wrapper {
-      margin-top: 100px;
+      margin-top: 20%;
       text-align: left;
 
       .form-description {
@@ -88,10 +88,37 @@
       .btn-warning {
         background-color: #fb8e38;
         border-radius: 10px;
+        &.active {
+          background-color: #549c45;
+          border-color: #549c45;
+        }
 
         span {
           color: white;
           font-size: 12px;
+
+          &.active {
+            font-weight: bold;
+            font-size: 16px;
+          }
+        }
+
+        .fa {
+          color: white;
+
+          &.active {
+            animation: slide-in 0.3s forwards;
+            -webkit-animation: slide-in 0.3s forwards;
+          }
+        }
+
+        @keyframes slide-in {
+          0% {
+            -webkit-transform: translateX(100%);
+          }
+          100% {
+            -webkit-transform: translateX(0%);
+          }
         }
       }
     }
@@ -102,10 +129,70 @@
     .form-control.ng-touched.ng-valid {
       border: 1px solid green;
     }
+
+    .btn {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    .btn-custom {
+      width: 100px;
+    }
+
+    .btn-warning:disabled,
+    .btn-warning.disabled {
+      color: #fff;
+      background-color: rgb(190, 190, 190) !important;
+      border-color: rgb(190, 190, 190);
+    }
+
+    .btn-ripple {
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      transition: all ease-in-out 0.5s;
+    }
+
+    .btn-ripple::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 25%;
+      height: 100%;
+      width: 50%;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      transition: all ease-in-out 1s;
+      transform: scale(5, 5);
+    }
+
+    .btn-ripple:active::after {
+      padding: 0;
+      margin: 0;
+      opacity: 0.2;
+      transition: 0s;
+      transform: scale(0, 0);
+    }
   }
 
   .content {
     height: auto;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .appstore-buttons-wrapper {
+    .app-buttons {
+      img {
+        width: 100px !important;
+        height: auto;
+        border-radius: 5px;
+      }
+    }
   }
 }
 
@@ -119,7 +206,7 @@
     height: 100vh;
 
     .content {
-      height: 500px;
+      height: 550px;
     }
 
     .content-wrapper {
