@@ -1,1 +1,74 @@
-<p>login works!</p>
+<div class="container-fluid">
+  <div class="row back">
+    <div class="col-sm-6 order-sm-first order-last">
+      <div class="content-wrapper">
+        <div class="logo-wrapper">
+          <div class="logo">
+            <img src="assets/images/welthy_logo.png" />
+          </div>
+        </div>
+        <div class="header-wrapper">
+          <div class="header">
+            <h1>Download & install the app for more details</h1>
+          </div>
+        </div>
+        <div class="appstore-buttons-wrapper">
+          <div class="app-buttons">
+            <img *ngIf="isAndroid" src="assets/images/google-play-badge.png" />
+            <img
+              *ngIf="isIOS"
+              class="app-store-img"
+              src="assets/images/app-store-badge1.png"
+            />
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <p class="form-description">
+            or, enter your user name and mobile number to get the link
+          </p>
+          <form>
+            <div class="row">
+              <div class="col-sm-8">
+                <input
+                  type="text"
+                  class="form-control username"
+                  placeholder="Enter Username"
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                />
+              </div>
+              <div class="col-sm-4"></div>
+            </div>
+            <br />
+            <div class="row">
+              <div class="col-sm-8">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"
+                      >91 <span class="caret">^</span></span
+                    >
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Enter Mobile Number"
+                    aria-label="Username"
+                    aria-describedby="basic-addon1"
+                  />
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <button class="btn btn-warning">
+                  <span>Get link</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="content"></div>
+    </div>
+  </div>
+</div>

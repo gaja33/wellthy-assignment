@@ -1,0 +1,135 @@
+.container-fluid {
+  background: url("/assets/images/wellthy_bg.png") no-repeat center right;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+  -o-background-size: contain;
+  height: 100vh;
+
+  .content-wrapper {
+    padding: 150px 0 0 150px;
+
+    .logo-wrapper {
+      text-align: left;
+      .logo {
+        img {
+          width: 200px;
+          height: auto;
+        }
+      }
+    }
+
+    .header-wrapper {
+      text-align: left;
+      margin-top: 50px;
+    }
+
+    .appstore-buttons-wrapper {
+      text-align: left;
+      margin-top: 30px;
+
+      .app-buttons {
+        display: inline-block;
+
+        img {
+          width: 200px;
+          height: auto;
+          border-radius: 5px;
+        }
+        .app-store-img {
+          margin-left: 10px;
+        }
+      }
+    }
+    .form-wrapper {
+      margin-top: 100px;
+      text-align: left;
+
+      .form-description {
+        color: #acacab;
+      }
+      .username {
+        background-color: #e8eae8;
+        border: none;
+        border-radius: 10px;
+        height: 40px;
+        &:focus {
+          outline: none;
+          box-shadow: none;
+          border: none;
+        }
+      }
+
+      .input-group {
+        input {
+          background-color: #e8eae8;
+          border: none;
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px;
+          &:focus {
+            outline: none;
+            box-shadow: none;
+            border: none;
+          }
+        }
+        .input-group-text {
+          background-color: #e8eae8;
+          border: none;
+          border-top-left-radius: 10px;
+          border-bottom-left-radius: 10px;
+        }
+      }
+
+      .caret {
+        margin-top: 5px;
+        color: #fb8e38;
+      }
+
+      .btn-warning {
+        background-color: #fb8e38;
+        border-radius: 10px;
+
+        span {
+          color: white;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .content {
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container-fluid {
+    background: url("/assets/images/wellthy_bg_small.png") no-repeat center top;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    -o-background-size: contain;
+    height: 100vh;
+
+    .content {
+      height: 500px;
+    }
+
+    .content-wrapper {
+      padding: 0;
+
+      .logo-wrapper {
+        text-align: center;
+      }
+      .header-wrapper {
+        text-align: center;
+      }
+      .appstore-buttons-wrapper {
+        text-align: center;
+      }
+      .form-wrapper {
+        text-align: center;
+      }
+    }
+  }
+}
