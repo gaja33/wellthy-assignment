@@ -87,6 +87,8 @@ export class LoginComponent implements OnInit {
     this.hideLink = true;
     this.enableLink = true;
 
+    localStorage.setItem("token", this.constants.TOKEN);
+
     //Method to send email
     Email.send({
       Host: this.constants.HOST,
