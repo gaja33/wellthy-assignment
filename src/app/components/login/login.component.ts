@@ -1,5 +1,11 @@
 import { Platform } from "@angular/cdk/platform";
 import { Component, OnInit } from "@angular/core";
+import {
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from "@angular/forms";
 
 @Component({
   selector: "app-login",
@@ -9,6 +15,7 @@ import { Component, OnInit } from "@angular/core";
 export class LoginComponent implements OnInit {
   isIOS: boolean = true;
   isAndroid: boolean = true;
+  loginform: FormGroup;
 
   constructor(public platform: Platform) {}
 
@@ -25,5 +32,43 @@ export class LoginComponent implements OnInit {
       this.isIOS = true;
       this.isAndroid = true;
     }
+
+    this.loginform = new FormGroup({
+      phone: new FormControl(null, [
+        Validators.required,
+        Validators.pattern("^[0-9]{10}$"),
+      ]),
+      username: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(30),
+        this.customPatternValid({
+          pattern: /^[A-Za-z]([_]?[A-Za-z\d]+)*$/,
+          msg: "Only alphanumeric with optional underscore is allowed and should start with character only",
+        }),
+      ]),
+    });
+  }
+
+  get phone() {
+    return this.loginform.get("phone");
+  }
+  get username() {
+    return this.loginform.get("username");
+  }
+
+  // customPatternValid function for alphanumeric and underscore
+
+  public customPatternValid(config: any): ValidatorFn {
+    return (control: FormControl) => {
+      let urlRegEx: RegExp = config.pattern;
+      if (control.value && !control.value.match(urlRegEx)) {
+        return {
+          invalidMsg: config.msg,
+        };
+      } else {
+        return null;
+      }
+    };
   }
 }

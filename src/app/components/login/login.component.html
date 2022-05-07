@@ -26,16 +26,36 @@
           <p class="form-description">
             or, enter your user name and mobile number to get the link
           </p>
-          <form>
+          <form [formGroup]="loginform">
             <div class="row">
               <div class="col-sm-8">
                 <input
+                  formControlName="username"
                   type="text"
                   class="form-control username"
                   placeholder="Enter Username"
                   aria-label="Username"
                   aria-describedby="basic-addon1"
                 />
+                <div
+                  *ngIf="
+                    username.invalid && (username.dirty || username.touched)
+                  "
+                  class="text-danger"
+                >
+                  <small *ngIf="username.errors.required">
+                    Username is required.
+                  </small>
+                  <small *ngIf="username.errors.minlength">
+                    Username must be at least 6 characters long.
+                  </small>
+                  <small *ngIf="username.errors.maxlength">
+                    Username must not be more than 30 characters.
+                  </small>
+                  <small *ngIf="loginform.controls.username.errors.invalidMsg">
+                    {{ loginform.controls.username.errors.invalidMsg }}
+                  </small>
+                </div>
               </div>
               <div class="col-sm-4"></div>
             </div>
@@ -49,6 +69,7 @@
                     >
                   </div>
                   <input
+                    formControlName="phone"
                     type="text"
                     class="form-control"
                     placeholder="Enter Mobile Number"
@@ -56,9 +77,21 @@
                     aria-describedby="basic-addon1"
                   />
                 </div>
+
+                <div
+                  *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                  class="text-danger"
+                >
+                  <small *ngIf="phone.errors.required">
+                    Mobile number is required.
+                  </small>
+                  <small *ngIf="phone.errors.pattern">
+                    Please enter valid 10 digits mobile number
+                  </small>
+                </div>
               </div>
               <div class="col-sm-4">
-                <button class="btn btn-warning">
+                <button class="btn btn-warning" [disabled]="loginform.invalid">
                   <span>Get link</span>
                 </button>
               </div>
