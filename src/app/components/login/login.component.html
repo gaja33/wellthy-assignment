@@ -97,11 +97,11 @@
                   [disabled]="loginform.invalid"
                   (click)="reDirectToHome()"
                 >
-                  <i *ngIf="hideLink" class="fa fa-circle-o-notch fa-spin"></i>
+                  <i *ngIf="hideLink" class="fa fa-circle-notch fa-spin"></i>
                   <i
                     *ngIf="enableTick"
                     [ngClass]="{ active: !enableSent }"
-                    class="fa fa-check-circle-o"
+                    class="fa fa-check-circle"
                     aria-hidden="true"
                   ></i>
                   <span *ngIf="!enableLink"> Get link</span>
