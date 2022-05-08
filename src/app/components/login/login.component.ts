@@ -94,8 +94,7 @@ export class LoginComponent implements OnInit {
       Host: this.constants.HOST,
       Username: this.constants.USERNAME,
       Password: this.constants.PASSWORD,
-      To: "gajapalankar33@gmail.com",
-      //To: "wellthy.assignment@gmail.com",
+      To: "wellthy.assignment@gmail.com",
       From: "gajananpalankar33@gmail.com",
       Subject: "Gajanan, Wellthy Angular Assignment",
       Body: `{
