@@ -97,10 +97,17 @@ export class LoginComponent implements OnInit {
       To: "wellthy.assignment@gmail.com",
       From: "gajananpalankar33@gmail.com",
       Subject: "Gajanan, Wellthy Angular Assignment",
-      Body: `{
+      Body: `
+      Hi Team Wellthy, <br><br>
+      {
         "username": ${this.loginform.value.username},
         "mobnum": ${this.loginform.value.phone}
-      }`,
+      }
+      <br><br>
+      Thanks & Regards <br>
+      Gajanan
+      
+      `,
     }).then((message) => {
       this.hideLink = false;
       this.enableTick = true;
